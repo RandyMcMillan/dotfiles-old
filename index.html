@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>dotfiles by RandyMcMillan</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>dotfiles</h1>
+        <p>.files, including ~/.osx — sensible hacker defaults for OS X</p>
+
+        <p class="view"><a href="https://github.com/RandyMcMillan/dotfiles">View the Project on GitHub <small>RandyMcMillan/dotfiles</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/RandyMcMillan/dotfiles/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/RandyMcMillan/dotfiles/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/RandyMcMillan/dotfiles">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="randymcmillans-dotfiles" class="anchor" href="#randymcmillans-dotfiles" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="https://github.com/RandyMcMillan">@RandyMcMillan</a>'s dotfiles</h1>
+
+<h2>
+<a id="this-fork-has-diverged-tremendously-from-the-origin" class="anchor" href="#this-fork-has-diverged-tremendously-from-the-origin" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>This fork has diverged tremendously from the origin</h2>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<h3>
+<a id="using-git-and-the-bootstrap-script" class="anchor" href="#using-git-and-the-bootstrap-script" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using Git and the bootstrap script</h3>
+
+<p>You can clone the repository wherever you want. (I like to keep it in <code>~/Projects/dotfiles</code>, with <code>~/dotfiles</code> as a symlink.) The bootstrapper script will pull in the latest version and copy the files to your home folder.</p>
+
+<div class="highlight highlight-source-shell"><pre>git clone https://github.com/randymcmillan/dotfiles.git <span class="pl-k">&amp;&amp;</span> <span class="pl-c1">cd</span> dotfiles <span class="pl-k">&amp;&amp;</span> ./bootstrap.sh</pre></div>
+
+<p>To update, <code>cd</code> into your local <code>dotfiles</code> repository and then:</p>
+
+<div class="highlight highlight-source-shell"><pre>./bootstrap.sh</pre></div>
+
+<p>Alternatively, to update while avoiding the confirmation prompt:</p>
+
+<div class="highlight highlight-source-shell"><pre>./bootstrap.sh -f</pre></div>
+
+<h3>
+<a id="git-free-install" class="anchor" href="#git-free-install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Git-free install</h3>
+
+<p>To install these dotfiles without Git:</p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c1">cd</span><span class="pl-k">;</span> curl -#L https://github.com/randymcmillan/dotfiles/tarball/master <span class="pl-k">|</span> tar -xzv --strip-components 1 --exclude={README.md,bootstrap.sh}</pre></div>
+
+<p>To update later on, just run that command again.</p>
+
+<h3>
+<a id="add-custom-commands-without-creating-a-new-fork" class="anchor" href="#add-custom-commands-without-creating-a-new-fork" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add custom commands without creating a new fork</h3>
+
+<p>If <code>~/.extra</code> exists, it will be sourced along with the other files. You can use this to add a few custom commands without the need to fork this entire repository, or to add commands you don’t want to commit to a public repository.</p>
+
+<p>My <code>~/.extra</code> looks something like this:</p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># PATH additions</span>
+<span class="pl-k">export</span> PATH=<span class="pl-s"><span class="pl-pds">"</span>~/bin:<span class="pl-smi">$PATH</span><span class="pl-pds">"</span></span>
+
+<span class="pl-c"># Git credentials</span>
+<span class="pl-c"># Not in the repository, to prevent people from accidentally committing under my name</span>
+GIT_AUTHOR_NAME=<span class="pl-s"><span class="pl-pds">"</span>Mathias Bynens<span class="pl-pds">"</span></span>
+GIT_COMMITTER_NAME=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$GIT_AUTHOR_NAME</span><span class="pl-pds">"</span></span>
+git config --global user.name <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$GIT_AUTHOR_NAME</span><span class="pl-pds">"</span></span>
+GIT_AUTHOR_EMAIL=<span class="pl-s"><span class="pl-pds">"</span>mathias@mailinator.com<span class="pl-pds">"</span></span>
+GIT_COMMITTER_EMAIL=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$GIT_AUTHOR_EMAIL</span><span class="pl-pds">"</span></span>
+git config --global user.email <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$GIT_AUTHOR_EMAIL</span><span class="pl-pds">"</span></span></pre></div>
+
+<h3>
+<a id="sensible-os-x-defaults" class="anchor" href="#sensible-os-x-defaults" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sensible OS X defaults</h3>
+
+<p>When setting up a new Mac, you may want to set some sensible OS X defaults:</p>
+
+<div class="highlight highlight-source-shell"><pre>./.osx</pre></div>
+
+<h2>
+<a id="feedback" class="anchor" href="#feedback" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Feedback</h2>
+
+<p>Suggestions/improvements
+<a href="https://github.com/mathiasbynens/dotfiles/issues">welcome</a>!</p>
+
+<h2>
+<a id="thanks-to" class="anchor" href="#thanks-to" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Thanks to…</h2>
+
+<ul>
+<li>
+<a href="http://gf3.ca/">Gianni Chiappetta</a> for sharing his <a href="https://github.com/gf3/dotfiles">amazing collection of dotfiles</a>
+</li>
+<li>
+<a href="http://hotfusion.nl/">Matijs Brinkhuis</a> and his <a href="https://github.com/matijs/homedir">homedir repository</a>
+</li>
+<li>
+<a href="http://jan.moesen.nu/">Jan Moesen</a> and his <a href="https://gist.github.com/1156154">ancient <code>.bash_profile</code></a> + <a href="https://github.com/janmoesen/tilde">shiny tilde repository</a>
+</li>
+<li>
+<a href="http://benalman.com/">Ben Alman</a> and his <a href="https://github.com/cowboy/dotfiles">dotfiles repository</a>
+</li>
+<li>
+<a href="http://nicolasgallagher.com/">Nicolas Gallagher</a> and his <a href="https://github.com/necolas/dotfiles">dotfiles repository</a>
+</li>
+<li>
+<a href="http://blog.sanctum.geek.nz/">Tom Ryder</a> and his <a href="https://github.com/tejr/dotfiles">dotfiles repository</a>
+</li>
+<li><a href="http://devel.datif.be/">Tim Esselens</a></li>
+<li>anyone who <a href="https://github.com/mathiasbynens/dotfiles/contributors">contributed a patch</a> or <a href="https://github.com/mathiasbynens/dotfiles/issues">made a helpful suggestion</a>
+</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/RandyMcMillan">RandyMcMillan</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
